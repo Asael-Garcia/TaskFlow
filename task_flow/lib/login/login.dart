@@ -76,6 +76,9 @@ class _loginState extends State<login> {
                   ElevatedButton(
                     onPressed: () {
                       // Aquí puedes agregar la lógica para manejar el inicio de sesión
+                     
+                      Navigator.pushNamed(context, '/home');
+                      
                     },
                     child: Text('Iniciar Sesión'),
                     style: ElevatedButton.styleFrom(
