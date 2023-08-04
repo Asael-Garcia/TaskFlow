@@ -1,13 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-class Projects extends StatefulWidget {
-  const Projects({super.key});
+class TeamWorks extends StatefulWidget {
+  const TeamWorks({super.key});
 
   @override
-  State<Projects> createState() => _ProjectsState();
+  State<TeamWorks> createState() => _TeamWorksState();
 }
 
-class _ProjectsState extends State<Projects> {
+class _TeamWorksState extends State<TeamWorks> {
+
+
   List<String> projectsName = ["Hola","Como","Estan","Todos"];
 
 
@@ -17,7 +18,7 @@ class _ProjectsState extends State<Projects> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Ingrese el nuevo proyecto"),
+          title: const Text("Ingrese el nuevo nombre del equipo"),
           content: TextField(
             onChanged: (value) {
               newProject = value;
@@ -48,19 +49,19 @@ class _ProjectsState extends State<Projects> {
     );
   }
 
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Proyectos"),
+ appBar: AppBar(
+        title: const Text("Equipos"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Center(
             child: Text(
-              "Proyectos",
+              "Equipos de trabajo",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -102,5 +103,3 @@ class _ProjectsState extends State<Projects> {
     );
   }
 }
-
-

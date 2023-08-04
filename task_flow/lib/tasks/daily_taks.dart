@@ -9,20 +9,70 @@ class DailyTask extends StatefulWidget {
 
 class _DailyTaskState extends State<DailyTask> {
   List<bool> isCheckedList = [false, false, false,false];
+  List<String> dailyTaskList = ["Hola","Como","Estan","Todos"];
+
   void _onCheckboxChanged(bool newValue, int index) {
     setState(() {
       isCheckedList[index] = newValue;
-      print("Index a eliminar $index");
+      int helper=index;
+      print("Index a eliminar ${dailyTaskList[helper]}");
       if (newValue) {
         // Delay removal of the item by 2 seconds
         Future.delayed(const Duration(seconds: 1), () {
           setState(() {
             isCheckedList.removeAt(index);
+            dailyTaskList.removeAt(index);
+            print(dailyTaskList);
           });
         });
       }
     });
   }
+
+  
+  void _showInputDialog() {
+    String newProject = "";
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Ingrese el nuevo proyecto"),
+          content: TextField(
+            onChanged: (value) {
+              newProject = value;
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Cerrar el dialog sin guardar
+              },
+              child: Text("Cancelar"),
+            ),
+            TextButton(
+              onPressed: () {
+                // Hacer algo con el valor ingresado (newTask)
+                print("Nuevo proyecto: $newProject");
+                setState(() {
+                   dailyTaskList.add(newProject);
+                   isCheckedList.add(false);
+                });
+               
+                Navigator.pop(context); // Cerrar el dialog después de guardar
+              },
+              child: Text("Guardar"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  
+
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +102,7 @@ class _DailyTaskState extends State<DailyTask> {
                     indent: 20,
                     endIndent: 20,
                   );
-                } else {
+                } else {  
                   // Calculate the actual index of the isCheckedList
                   final actualIndex = index ~/ 2;
                   print(actualIndex);
@@ -63,7 +113,7 @@ class _DailyTaskState extends State<DailyTask> {
                         _onCheckboxChanged(value!, actualIndex);
                       },
                     ),
-                    title: Text('Cosa ${actualIndex + 1}'),
+                    title: Text('${dailyTaskList[actualIndex]}'),
                   );
                 }
               },
@@ -74,6 +124,8 @@ class _DailyTaskState extends State<DailyTask> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Acción al presionar el botón
+          _showInputDialog(); // Mostrar el Dialog con el campo de entrada
+          print("Presioonado");
         },
         child: Icon(Icons.add),
         tooltip: 'Añadir',
