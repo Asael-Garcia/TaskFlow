@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
-class home extends StatefulWidget {
-  const home({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<home> createState() => _homeState();
+  State<Home> createState() => _HomeState();
 }
 
-class _homeState extends State<home> {
+class _HomeState extends State<Home> {
+
+
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return Container(
+      child: Scaffold(
       body: ListView(
         children: [
           //contenedor de bienvenida del usuarios
@@ -122,23 +125,6 @@ class _homeState extends State<home> {
           ),
         ],
       ),
-       bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Inicio',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Buscar',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Perfil',
-            ),
-          ],
-        ),
-    
     ),
     );
   }

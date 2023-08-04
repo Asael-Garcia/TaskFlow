@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:task_flow/home_main.dart';
 import 'package:task_flow/landing/landing.dart';
 import 'package:task_flow/login/login.dart';
 import 'package:task_flow/home/home.dart';
+import 'package:task_flow/projects/projects.dart';
+import 'package:task_flow/tasks/daily_taks.dart';
 
 
 void main(List<String> args) {
@@ -13,11 +16,17 @@ class taskFlowApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/home',
+
+
+      initialRoute: '/projects',
       routes: {
         '/':(context)=>landing(),
         '/login':(context)=>login(),
-        '/home':(context)=>home()
+        '/home':(context)=>Home(),
+        '/mainScreen':(context)=>MainScreen(),
+        '/dailyTask':(context)=>DailyTask(),
+        '/projects':(context)=>Projects()
+        
       },
     );
   }
