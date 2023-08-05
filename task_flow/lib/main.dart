@@ -6,6 +6,7 @@ import 'package:task_flow/home/home.dart';
 import 'package:task_flow/projects/projects.dart';
 import 'package:task_flow/projects/seeProjects.dart';
 import 'package:task_flow/tasks/daily_taks.dart';
+import 'package:task_flow/teams/makeTeam.dart';
 import 'package:task_flow/teams/teams.dart';
 
 
@@ -20,7 +21,7 @@ class taskFlowApp extends StatelessWidget {
     return MaterialApp(
 
 
-      initialRoute: '/seeProjects',
+      initialRoute: '/makeTeams',
       routes: {
         '/':(context)=>landing(),
         '/login':(context)=>login(),
@@ -29,7 +30,8 @@ class taskFlowApp extends StatelessWidget {
         '/dailyTask':(context)=>DailyTask(),
         '/projects':(context)=>Projects(),
         '/teams':(context)=>TeamWorks(),
-        '/seeProjects':(context) => SeeProjects()
+        '/seeProjects':(context) => SeeProjects(),
+        '/makeTeams':(context) => MakeTeams()
         
       },
     );
