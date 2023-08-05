@@ -12,12 +12,41 @@ class _SeeProjectsState extends State<SeeProjects> {
   String projectDescription = "";
   List<bool> isCheckedList = [false];
   List<String> projectItems = ["Una tareas"];
-  List<String> responsibles=["Juan","Pedro","Pablo","Alberto","Jose Julian"]; 
-  List<String> responsibles2=["Juan"];
+  List<String> responsibles = [
+    "Juan",
+    "Pedro",
+    "Pablo",
+    "Alberto",
+    "Jose Julian"
+  ];
+  List<String> responsibles2 = ["Juan"];
   String selectedOption = 'Opción 1';
-  String respon= "Juan";
+  String respon = "Juan";
   List<String> options = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4'];
+  List<String> selectedDateAndTime = [];
 
+  void _showDateTimePicker() async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2022),
+      lastDate: DateTime(2025),
+    );
+
+    if (pickedDate != null) {
+      TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+      );
+
+      if (pickedTime != null) {
+        setState(() {
+          selectedDateAndTime
+              .add('${pickedDate.toLocal()} ${pickedTime.format(context)}');
+        });
+      }
+    }
+  }
 
   void _onCheckboxChanged(bool newValue, int index) {
     setState(() {
@@ -57,9 +86,10 @@ class _SeeProjectsState extends State<SeeProjects> {
             TextButton(
               onPressed: () {
                 // Agregar el nuevo elemento a la lista
-              
+
                 Navigator.pop(context);
-                _showSelectDialog(newTask); // Cerrar el dialog después de guardar
+                _showSelectDialog(
+                    newTask); // Cerrar el dialog después de guardar
               },
               child: Text("Siguiente"),
             ),
@@ -69,9 +99,7 @@ class _SeeProjectsState extends State<SeeProjects> {
     );
   }
 
-
-void _showSelectDialog(String newTask) {
-
+  void _showSelectDialog(String newTask) {
     showDialog(
       context: context,
       builder: (context) {
@@ -81,9 +109,9 @@ void _showSelectDialog(String newTask) {
             value: respon,
             onChanged: (String? newValue) {
               setState(() {
-                 respon = newValue!;
-                 print(newValue);
-                 print(respon);
+                respon = newValue!;
+                print(newValue);
+                print(respon);
               });
             },
             items: responsibles.map((String option) {
@@ -104,11 +132,11 @@ void _showSelectDialog(String newTask) {
               onPressed: () {
                 // Realizar una acción con la opción seleccionada
                 Navigator.pop(context); // Cerrar el dialog
+                _showDateTimePicker();
                 setState(() {
                   projectItems.add(newTask);
                   isCheckedList.add(false);
                   responsibles2.add(respon);
-                  
                 });
               },
               child: Text("Aceptar"),
@@ -118,6 +146,7 @@ void _showSelectDialog(String newTask) {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,7 +181,6 @@ void _showSelectDialog(String newTask) {
             height: 20,
             child: Divider(
               indent: 20,
-             
               endIndent: 20,
             ),
           ),
@@ -209,7 +237,8 @@ void _showSelectDialog(String newTask) {
                         _onCheckboxChanged(value!, actualIndex);
                       },
                     ),
-                    title: Text('${projectItems[actualIndex]} \nResponsable: ${responsibles[actualIndex]}'),
+                    title: Text(
+                        '${projectItems[actualIndex]} \nResponsable: ${responsibles2[actualIndex]}\nFecha limite: ${selectedDateAndTime[actualIndex]}'),
                   );
                 }
               },
