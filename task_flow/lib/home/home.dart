@@ -1,50 +1,50 @@
+import 'dart:js';
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
+import 'package:task_flow/projects/projects.dart';
+import 'package:task_flow/home_main.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({super.key, required this.context}); // Pasar el contexto al widget
+
+  final BuildContext context;
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-
-
-
   @override
   Widget build(BuildContext context) {
+    BuildContext ctx=this.context;
     return Container(
       child: Scaffold(
-      body: ListView(
-        children: [
-          //contenedor de bienvenida del usuarios
-          const Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.start, // Alinea el texto a la izquierda
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    left: 25,
-                    top: 60), // Añade un padding de 5 unidades a la izquierda
-                child: Text(
-                  "Bienvenido de nuevo usuario",
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Color.fromRGBO(26, 29, 35, 1),
-                    fontWeight: FontWeight.w800, // Fuente en negrita
+        body: ListView(
+          children: [
+            //contenedor de bienvenida del usuarios
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 25, top: 60),
+                  child: Text(
+                    "Bienvenido de nuevo usuario",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Color.fromRGBO(26, 29, 35, 1),
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: 25,
-                    top: 10), // Añade un padding de 5 unidades a la izquierda
-                child: Text("Mira tus tareas asignadas para el día de hoy"),
-              ),
-            ],
-          ),
-          //contenedor de las tareas pendientes para el día
-          Container(
+                Padding(
+                  padding: const EdgeInsets.only(left: 25, top: 10),
+                  child: Text("Mira tus tareas asignadas para el día de hoy"),
+                ),
+              ],
+            ),
+            //contenedor de las tareas pendientes para el día
+            Container(
               margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -62,8 +62,7 @@ class _HomeState extends State<Home> {
               child: Container(
                 height: 100,
                 child: ListView(
-                  shrinkWrap:
-                      true, // Ajusta el tamaño del ListView al contenido
+                  shrinkWrap: true,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,10 +73,9 @@ class _HomeState extends State<Home> {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Container(
-                          height: 2, // Altura de la línea
-                          color: Colors.grey, // Color de la línea
-                          margin: EdgeInsets.symmetric(
-                              vertical: 8), // Margen entre título y descripción
+                          height: 2,
+                          color: Colors.grey,
+                          margin: EdgeInsets.symmetric(vertical: 8),
                         ),
                         Text(
                           "Título",
@@ -85,10 +83,9 @@ class _HomeState extends State<Home> {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Container(
-                          height: 2, // Altura de la línea
-                          color: Colors.grey, // Color de la línea
-                          margin: EdgeInsets.symmetric(
-                              vertical: 8), // Margen entre título y descripción
+                          height: 2,
+                          color: Colors.grey,
+                          margin: EdgeInsets.symmetric(vertical: 8),
                         ),
                         Text(
                           "Título",
@@ -96,41 +93,41 @@ class _HomeState extends State<Home> {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Container(
-                          height: 2, // Altura de la línea
-                          color: Colors.grey, // Color de la línea
-                          margin: EdgeInsets.symmetric(
-                              vertical: 8), // Margen entre título y descripción
+                          height: 2,
+                          color: Colors.grey,
+                          margin: EdgeInsets.symmetric(vertical: 8),
                         ),
                       ],
                     ),
                   ],
                 ),
-              )),
-          //widgets de Agenda, proyecttos, Equipos de trabajo y mi dia
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: GridView.count(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              shrinkWrap: true, // Para que tome solo el espacio necesario
-              physics:NeverScrollableScrollPhysics(), // Deshabilitar el desplazamiento del ListView
-              children: [
-                _buildItemWidget("Agenda"),
-                _buildItemWidget("Proyectos"),
-                _buildItemWidget("Equipos de trabajo"),
-                _buildItemWidget("Mi día"),
-              ],
+              ),
             ),
-          ),
-        ],
+            //widgets de Agenda, proyectos, Equipos de trabajo y mi día
+            Container(
+              padding: const EdgeInsets.all(16),
+              child: GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                children: [
+                  _buildItemWidget("Personal", "personalTasks", widget.context), // Pasar el contexto aquí
+                  _buildItemWidget("Proyectos", "projects", widget.context), // Pasar el contexto aquí
+                  _buildItemWidget("Equipos de trabajo", "teams", widget.context), // Pasar el contexto aquí
+                  _buildItemWidget("Mi día", "dailyTask", widget.context), // Pasar el contexto aquí
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-    ),
     );
   }
 }
 
-Widget _buildItemWidget(String title) {
+Widget _buildItemWidget(String title, String screen, BuildContext ctx2) {
   return Container(
     padding: const EdgeInsets.all(16),
     decoration: BoxDecoration(
@@ -145,19 +142,24 @@ Widget _buildItemWidget(String title) {
         ),
       ],
     ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 8),
-        Text(
-          "Descripción del $title",
-          style: const TextStyle(fontSize: 14),
-        ),
-      ],
+    child: GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(ctx2, '/$screen', arguments: "1");
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 8),
+          Text(
+            "Descripción del $title",
+            style: const TextStyle(fontSize: 14),
+          ),
+        ],
+      ),
     ),
   );
 }

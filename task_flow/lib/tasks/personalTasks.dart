@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DailyTask extends StatefulWidget {
-  const DailyTask({super.key});
+class PersonalTasks extends StatefulWidget {
+  const PersonalTasks({super.key});
 
   @override
-  State<DailyTask> createState() => _DailyTaskState();
+  State<PersonalTasks> createState() => _PersonalTasksState();
 }
 
-class _DailyTaskState extends State<DailyTask> {
+class _PersonalTasksState extends State<PersonalTasks> {
   List<bool> isCheckedList = [false, false, false,false];
   List<String> dailyTaskList = ["Hola","Como","Estan","Todos"];
 
@@ -30,6 +30,44 @@ class _DailyTaskState extends State<DailyTask> {
   }
 
   
+  void _showInputDialog() {
+    String newProject = "";
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Ingrese la nueva tarea"),
+          content: TextField(
+            onChanged: (value) {
+              newProject = value;
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Cerrar el dialog sin guardar
+              },
+              child: Text("Cancelar"),
+            ),
+            TextButton(
+              onPressed: () {
+                // Hacer algo con el valor ingresado (newTask)
+                print("Nuevo proyecto: $newProject");
+                setState(() {
+                   dailyTaskList.add(newProject);
+                   isCheckedList.add(false);
+                });
+               
+                Navigator.pop(context); // Cerrar el dialog después de guardar
+              },
+              child: Text("Guardar"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   
 
@@ -40,7 +78,7 @@ class _DailyTaskState extends State<DailyTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mis tareas"),
+        title: Text("Mis tareas personales"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,6 +120,15 @@ class _DailyTaskState extends State<DailyTask> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Acción al presionar el botón
+          _showInputDialog(); // Mostrar el Dialog con el campo de entrada
+          print("Presioonado");
+        },
+        child: Icon(Icons.add),
+        tooltip: 'Añadir',
       ),
     );
   }

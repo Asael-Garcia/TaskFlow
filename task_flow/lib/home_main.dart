@@ -13,16 +13,19 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
 
   //contenedores de las pantallas
-  final screens= [const Home(), const TasksPending(), const UserProfile()];
+  
 
 
   int selectedIndex=0;
   @override
   Widget build(BuildContext context) {
+    final screens= [ Home(context: context), const TasksPending(), const UserProfile()];
+      
     return MaterialApp(
+      
       home: Scaffold(
-
         //donde se presentan los contenedores
+        
         body: IndexedStack(
           index: selectedIndex,
           children: screens,

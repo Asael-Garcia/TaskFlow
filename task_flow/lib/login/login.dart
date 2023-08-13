@@ -77,7 +77,7 @@ class _loginState extends State<login> {
                     onPressed: () {
                       // Aquí puedes agregar la lógica para manejar el inicio de sesión
                      
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushNamed(context, '/mainScreen');
                       
                     },
                     child: Text('Iniciar Sesión'),
