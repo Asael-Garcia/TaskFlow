@@ -133,7 +133,7 @@ class _MakeTeamsState extends State<MakeTeams> {
                 });
               },
               decoration: const InputDecoration(
-                hintText: "Ingrese la descripción del proyecto",
+                hintText: "Ingrese la descripción del equipo",
                 border: OutlineInputBorder(),
               ),
             ),

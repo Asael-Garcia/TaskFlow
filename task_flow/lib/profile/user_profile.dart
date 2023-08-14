@@ -84,7 +84,7 @@ class UserProfile extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      "Ayuda",
+                      "Cerrar Sesión",
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
