@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class PersonalTasks extends StatefulWidget {
-  const PersonalTasks({super.key});
+class Pendings extends StatefulWidget {
+  const Pendings({super.key});
 
   @override
-  State<PersonalTasks> createState() => _PersonalTasksState();
+  State<Pendings> createState() => _PendingsState();
 }
 
-class _PersonalTasksState extends State<PersonalTasks> {
-  List<bool> isCheckedList = [false, false, false, false];
-  List<String> dailyTaskList = ["Hola", "Como", "Estan", "Todos"];
+class _PendingsState extends State<Pendings> {
+  List<bool> isCheckedList = [false, false, false,false];
+  List<String> dailyTaskList = ["Hola","Como","Estan","Todos"];
 
   void _onCheckboxChanged(bool newValue, int index) {
     setState(() {
       isCheckedList[index] = newValue;
-      int helper = index;
+      int helper=index;
       print("Index a eliminar ${dailyTaskList[helper]}");
       if (newValue) {
         // Delay removal of the item by 2 seconds
@@ -29,57 +29,25 @@ class _PersonalTasksState extends State<PersonalTasks> {
     });
   }
 
-  void _showInputDialog() {
-    String newProject = "";
+  
 
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text("Ingrese la nueva tarea"),
-          content: TextField(
-            onChanged: (value) {
-              newProject = value;
-            },
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context); // Cerrar el dialog sin guardar
-              },
-              child: Text("Cancelar"),
-            ),
-            TextButton(
-              onPressed: () {
-                // Hacer algo con el valor ingresado (newTask)
-                print("Nuevo proyecto: $newProject");
-                setState(() {
-                  dailyTaskList.add(newProject);
-                  isCheckedList.add(false);
-                });
+  
 
-                Navigator.pop(context); // Cerrar el dialog después de guardar
-              },
-              child: Text("Guardar"),
-            ),
-          ],
-        );
-      },
-    );
-  }
+
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mis tareas personales"),
+        title:const Text("Mis pendeintes"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Center(
             child: Text(
-              "Hoy",
+              "Pendientes",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -96,7 +64,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
                     indent: 20,
                     endIndent: 20,
                   );
-                } else {
+                } else {  
                   // Calculate the actual index of the isCheckedList
                   final actualIndex = index ~/ 2;
                   print(actualIndex);
@@ -107,10 +75,6 @@ class _PersonalTasksState extends State<PersonalTasks> {
                         _onCheckboxChanged(value!, actualIndex);
                       },
                     ),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.edit),
-                      onPressed: () {},
-                    ),
                     title: Text('${dailyTaskList[actualIndex]}'),
                   );
                 }
@@ -118,15 +82,6 @@ class _PersonalTasksState extends State<PersonalTasks> {
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Acción al presionar el botón
-          _showInputDialog(); // Mostrar el Dialog con el campo de entrada
-          print("Presioonado");
-        },
-        child: Icon(Icons.add),
-        tooltip: 'Añadir',
       ),
     );
   }

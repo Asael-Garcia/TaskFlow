@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_flow/home/home.dart';
+import 'package:task_flow/pending/pending.dart';
 import 'package:task_flow/profile/user_profile.dart';
 import 'package:task_flow/tasks/tasks.dart';
 
@@ -19,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   int selectedIndex=0;
   @override
   Widget build(BuildContext context) {
-    final screens= [ Home(context: context), const TasksPending(), const UserProfile()];
+    final screens= [ Home(context: context), const Pendings(), const UserProfile()];
       
     return MaterialApp(
       
