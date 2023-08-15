@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:task_flow/helpers/auth.helper.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
-
+  handleLogout () async {
+    await AuthHandler().logout();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -78,18 +81,22 @@ class UserProfile extends StatelessWidget {
                 ],
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: Row(
                 children: [
-                  Expanded(
-                    child: Text(
-                      "Cerrar Sesión",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  InkWell(
+                    child: const Expanded(
+                      child: Text(
+                        "Cerrar Sesión",
+                        style:
+                            TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        
+                      ),
                     ),
+                    onTap: () => handleLogout(),
                   ),
-                  Text(
+                  const Text(
                     ">",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),

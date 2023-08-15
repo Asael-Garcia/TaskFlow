@@ -13,6 +13,7 @@ class AuthHandler{
           auth = true;
         }
     });
+    print(auth);
     return auth;
   }
   
@@ -21,6 +22,15 @@ class AuthHandler{
   }
 
   Future<void> signIn(String email, String password) async {
-    await _auth.signInWithEmailAndPassword(email: email, password: password);
+    try{
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+    }
+    on Error {
+      return;
+    }
+  }
+  
+  Future<void> logout() async{
+    await FirebaseAuth.instance.signOut();
   }
 }

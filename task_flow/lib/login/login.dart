@@ -25,9 +25,7 @@ class _loginState extends State<login> {
     setState(() {
       _loading = false;
     });
-    if(await AuthHandler().isAuth()){
-      Navigator.pushNamed(context, '/mainScreen');
-    }
+    Navigator.pushNamed(context, '/mainScreen');
   }
   @override
   Widget build(BuildContext context) {
