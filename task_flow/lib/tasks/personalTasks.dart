@@ -31,7 +31,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
 
   void _showInputDialog() {
     String newProject = "";
-
+   
     showDialog(
       context: context,
       builder: (context) {
@@ -67,6 +67,45 @@ class _PersonalTasksState extends State<PersonalTasks> {
       },
     );
   }
+
+   void _showInputDialogEdit(int index) {
+    String newProject = "";
+   
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Ingrese la nueva tarea"),
+          content: TextField(
+            onChanged: (value) {
+              newProject = value;
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Cerrar el dialog sin guardar
+              },
+              child: Text("Cancelar"),
+            ),
+            TextButton(
+              onPressed: () {
+                // Hacer algo con el valor ingresado (newTask)
+                print("Nuevo proyecto: $newProject");
+                setState(() {
+                  dailyTaskList[index]=newProject;
+                });
+
+                Navigator.pop(context); // Cerrar el dialog después de guardar
+              },
+              child: Text("Guardar"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +148,10 @@ class _PersonalTasksState extends State<PersonalTasks> {
                     ),
                     trailing: IconButton(
                       icon: const Icon(Icons.edit),
-                      onPressed: () {},
+                      onPressed: () {
+                        print(actualIndex);//jalar el indice
+                        _showInputDialogEdit(actualIndex);
+                      },
                     ),
                     title: Text('${dailyTaskList[actualIndex]}'),
                   );
@@ -122,6 +164,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Acción al presionar el botón
+          
           _showInputDialog(); // Mostrar el Dialog con el campo de entrada
           print("Presioonado");
         },
