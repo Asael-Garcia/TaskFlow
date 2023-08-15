@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:task_flow/home/home.dart';
 import 'package:task_flow/pending/pending.dart';
 import 'package:task_flow/profile/user_profile.dart';
-import 'package:task_flow/tasks/tasks.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

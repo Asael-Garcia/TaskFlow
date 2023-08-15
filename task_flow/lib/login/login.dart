@@ -59,7 +59,7 @@ class _loginState extends State<login> {
                 children: [
                   const SizedBox(height: 20),
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Correo Electrónico',
                       border: OutlineInputBorder(),
                     ),
@@ -67,12 +67,12 @@ class _loginState extends State<login> {
                   const SizedBox(height: 16),
                   TextFormField(
                     obscureText: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Contraseña',
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
                       // Aquí puedes agregar la lógica para manejar el inicio de sesión
@@ -80,12 +80,12 @@ class _loginState extends State<login> {
                       Navigator.pushNamed(context, '/mainScreen');
                       
                     },
-                    child: Text('Iniciar Sesión'),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30), // Ajusta el valor del radio para modificar la forma del óvalo
                       ),
                     ),
+                    child: const Text('Iniciar Sesión'),
                   ),
                 ],
               ),

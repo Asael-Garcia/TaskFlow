@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class Projects extends StatefulWidget {
   const Projects({super.key});
@@ -17,7 +16,7 @@ class _ProjectsState extends State<Projects> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Ingrese el nuevo proyecto"),
+          title: const Text("Ingrese el nuevo proyecto"),
           content: TextField(
             onChanged: (value) {
               newProject = value;
@@ -28,7 +27,7 @@ class _ProjectsState extends State<Projects> {
               onPressed: () {
                 Navigator.pop(context); // Cerrar el dialog sin guardar
               },
-              child: Text("Cancelar"),
+              child: const Text("Cancelar"),
             ),
             TextButton(
               onPressed: () {
@@ -40,7 +39,7 @@ class _ProjectsState extends State<Projects> {
                
                 Navigator.pop(context); // Cerrar el dialog después de guardar
               },
-              child: Text("Guardar"),
+              child: const Text("Guardar"),
             ),
           ],
         );
@@ -82,7 +81,7 @@ class _ProjectsState extends State<Projects> {
                   final actualIndex = index ~/ 2;
                   print(actualIndex);
                   return ListTile(
-                    title: Text('${projectsName[actualIndex]}'),
+                    title: Text(projectsName[actualIndex]),
                   );
                 }
               },
@@ -96,8 +95,8 @@ class _ProjectsState extends State<Projects> {
           _showInputDialog(); // Mostrar el Dialog con el campo de entrada
           print("Presioonado");
         },
-        child: Icon(Icons.add),
         tooltip: 'Añadir proyecto',
+        child: const Icon(Icons.add),
       ),
     );
   }

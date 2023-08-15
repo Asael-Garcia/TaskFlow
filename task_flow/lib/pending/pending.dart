@@ -75,7 +75,7 @@ class _PendingsState extends State<Pendings> {
                         _onCheckboxChanged(value!, actualIndex);
                       },
                     ),
-                    title: Text('${dailyTaskList[actualIndex]}'),
+                    title: Text(dailyTaskList[actualIndex]),
                   );
                 }
               },

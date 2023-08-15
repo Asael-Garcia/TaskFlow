@@ -29,7 +29,7 @@ class _TeamWorksState extends State<TeamWorks> {
               onPressed: () {
                 Navigator.pop(context); // Cerrar el dialog sin guardar
               },
-              child: Text("Cancelar"),
+              child: const Text("Cancelar"),
             ),
             TextButton(
               onPressed: () {
@@ -41,7 +41,7 @@ class _TeamWorksState extends State<TeamWorks> {
                
                 Navigator.pop(context); // Cerrar el dialog después de guardar
               },
-              child: Text("Guardar"),
+              child: const Text("Guardar"),
             ),
           ],
         );
@@ -83,7 +83,7 @@ class _TeamWorksState extends State<TeamWorks> {
                   final actualIndex = index ~/ 2;
                   print(actualIndex);
                   return ListTile(
-                    title: Text('${projectsName[actualIndex]}'),
+                    title: Text(projectsName[actualIndex]),
                   );
                 }
               },
@@ -97,8 +97,8 @@ class _TeamWorksState extends State<TeamWorks> {
           _showInputDialog(); // Mostrar el Dialog con el campo de entrada
           print("Presioonado");
         },
-        child: Icon(Icons.add),
         tooltip: 'Añadir proyecto',
+        child: const Icon(Icons.add),
       ),
     );
   }

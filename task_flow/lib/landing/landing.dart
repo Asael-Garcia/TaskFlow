@@ -9,7 +9,7 @@ class landing extends StatelessWidget {
             body: SingleChildScrollView(
                 child: Column(
               children: [
-                SizedBox(height: 200),
+                const SizedBox(height: 200),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -18,7 +18,7 @@ class landing extends StatelessWidget {
                       width: 300,
                       height: 500,
                       color: Colors.blue,
-                      child: Center(
+                      child: const Center(
                         child: Text(
                             'Este es un Container con carrusel de images',
                             style: TextStyle(color: Colors.white)),
@@ -26,7 +26,7 @@ class landing extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,7 +35,7 @@ class landing extends StatelessWidget {
                          onPressed: () {
                           Navigator.pushNamed(context, "/login");
                          },//funcion que lo va madar a otra pantalla
-                          child: Text("Iniciar sesión")
+                          child: const Text("Iniciar sesión")
                           )
                     ]),
               ],

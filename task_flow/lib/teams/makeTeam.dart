@@ -32,7 +32,7 @@ class _MakeTeamsState extends State<MakeTeams> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Añadir nuevo elemento"),
+          title: const Text("Añadir nuevo elemento"),
           content: TextField(
             onChanged: (value) {
               name = value;
@@ -43,7 +43,7 @@ class _MakeTeamsState extends State<MakeTeams> {
               onPressed: () {
                 Navigator.pop(context); // Cerrar el dialog sin guardar
               },
-              child: Text("Cancelar"),
+              child: const Text("Cancelar"),
             ),
             TextButton(
               onPressed: () {
@@ -52,7 +52,7 @@ class _MakeTeamsState extends State<MakeTeams> {
                 Navigator.pop(context);
                  _showSelectDialog(name);
               },
-              child: Text("Siguiente"),
+              child: const Text("Siguiente"),
             ),
           ],
         );
@@ -98,7 +98,7 @@ class _MakeTeamsState extends State<MakeTeams> {
                     rol.add(respon);
                 });
               },
-              child: Text("Aceptar"),
+              child: const Text("Aceptar"),
             ),
           ],
         );
@@ -109,7 +109,7 @@ class _MakeTeamsState extends State<MakeTeams> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Editar equipo"),
+        title: const Text("Editar equipo"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,8 +174,8 @@ class _MakeTeamsState extends State<MakeTeams> {
         onPressed: () {
           _showInputDialog(); // Mostrar el Dialog con el campo de entrada
         },
-        child: Icon(Icons.add),
         tooltip: 'Añadir elemento',
+        child: const Icon(Icons.add),
       ),
 
 

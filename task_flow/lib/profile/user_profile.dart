@@ -17,7 +17,7 @@ class UserProfile extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               child: Image.asset(
                 'ruta_de_la_imagen',
                 height: 400,

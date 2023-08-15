@@ -70,7 +70,7 @@ class _SeeProjectsState extends State<SeeProjects> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Añadir nuevo elemento"),
+          title: const Text("Añadir nuevo elemento"),
           content: TextField(
             onChanged: (value) {
               newTask = value;
@@ -81,7 +81,7 @@ class _SeeProjectsState extends State<SeeProjects> {
               onPressed: () {
                 Navigator.pop(context); // Cerrar el dialog sin guardar
               },
-              child: Text("Cancelar"),
+              child: const Text("Cancelar"),
             ),
             TextButton(
               onPressed: () {
@@ -91,7 +91,7 @@ class _SeeProjectsState extends State<SeeProjects> {
                 _showSelectDialog(
                     newTask); // Cerrar el dialog después de guardar
               },
-              child: Text("Siguiente"),
+              child: const Text("Siguiente"),
             ),
           ],
         );
@@ -139,7 +139,7 @@ class _SeeProjectsState extends State<SeeProjects> {
                   responsibles2.add(respon);
                 });
               },
-              child: Text("Aceptar"),
+              child: const Text("Aceptar"),
             ),
           ],
         );
@@ -197,7 +197,7 @@ class _SeeProjectsState extends State<SeeProjects> {
           Center(
             child: Container(
               width: double.infinity, // Ocupa todo el ancho disponible
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: DropdownButton<String>(
                 isExpanded:
                     true, // Para que el DropdownButton abarque todo el ancho del Container
@@ -250,8 +250,8 @@ class _SeeProjectsState extends State<SeeProjects> {
         onPressed: () {
           _showInputDialog(); // Mostrar el Dialog con el campo de entrada
         },
-        child: Icon(Icons.add),
         tooltip: 'Añadir elemento',
+        child: const Icon(Icons.add),
       ),
     );
   }

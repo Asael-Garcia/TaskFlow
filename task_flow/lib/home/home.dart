@@ -19,11 +19,11 @@ class _HomeState extends State<Home> {
         body: ListView(
           children: [
             //contenedor de bienvenida del usuarios
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 60),
+                  padding: EdgeInsets.only(left: 25, top: 60),
                   child: Text(
                     "Bienvenido de nuevo usuario",
                     style: TextStyle(
@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 10),
+                  padding: EdgeInsets.only(left: 25, top: 10),
                   child: Text("Mira tus tareas asignadas para el día de hoy"),
                 ),
               ],
@@ -51,11 +51,11 @@ class _HomeState extends State<Home> {
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 4,
-                    offset: Offset(0, 2),
+                    offset: const Offset(0, 2),
                   ),
                 ],
               ),
-              child: Container(
+              child: SizedBox(
                 height: 100,
                 child: ListView(
                   shrinkWrap: true,
@@ -63,7 +63,7 @@ class _HomeState extends State<Home> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Título",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
@@ -71,9 +71,9 @@ class _HomeState extends State<Home> {
                         Container(
                           height: 2,
                           color: Colors.grey,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                          margin: const EdgeInsets.symmetric(vertical: 8),
                         ),
-                        Text(
+                        const Text(
                           "Título",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
@@ -81,9 +81,9 @@ class _HomeState extends State<Home> {
                         Container(
                           height: 2,
                           color: Colors.grey,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                          margin: const EdgeInsets.symmetric(vertical: 8),
                         ),
-                        Text(
+                        const Text(
                           "Título",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
@@ -91,7 +91,7 @@ class _HomeState extends State<Home> {
                         Container(
                           height: 2,
                           color: Colors.grey,
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                          margin: const EdgeInsets.symmetric(vertical: 8),
                         ),
                       ],
                     ),
@@ -107,7 +107,7 @@ class _HomeState extends State<Home> {
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   _buildItemWidget("Personal", "personalTasks", widget.context), // Pasar el contexto aquí
                   _buildItemWidget("Proyectos", "projects", widget.context), // Pasar el contexto aquí
@@ -134,7 +134,7 @@ Widget _buildItemWidget(String title, String screen, BuildContext ctx2) {
           color: Colors.grey.withOpacity(0.5),
           spreadRadius: 2,
           blurRadius: 4,
-          offset: Offset(0, 2),
+          offset: const Offset(0, 2),
         ),
       ],
     ),
@@ -149,7 +149,7 @@ Widget _buildItemWidget(String title, String screen, BuildContext ctx2) {
             title,
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             "Descripción del $title",
             style: const TextStyle(fontSize: 14),

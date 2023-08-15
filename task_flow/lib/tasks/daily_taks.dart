@@ -40,7 +40,7 @@ class _DailyTaskState extends State<DailyTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mis tareas"),
+        title: const Text("Mis tareas"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +75,7 @@ class _DailyTaskState extends State<DailyTask> {
                         _onCheckboxChanged(value!, actualIndex);
                       },
                     ),
-                    title: Text('${dailyTaskList[actualIndex]}'),
+                    title: Text(dailyTaskList[actualIndex]),
                   );
                 }
               },

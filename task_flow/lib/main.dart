@@ -12,7 +12,7 @@ import 'package:task_flow/teams/teams.dart';
 
 
 void main(List<String> args) {
-  runApp(taskFlowApp());
+  runApp(const taskFlowApp());
 }
 class taskFlowApp extends StatelessWidget {
   const taskFlowApp({super.key});
@@ -24,16 +24,16 @@ class taskFlowApp extends StatelessWidget {
 
       initialRoute: '/landing',
       routes: {
-        '/landing':(context)=>landing(),
-        '/login':(context)=>login(),
+        '/landing':(context)=>const landing(),
+        '/login':(context)=>const login(),
         '/home':(context)=>Home(context: context,),
-        '/mainScreen':(context)=>MainScreen(),
-        '/dailyTask':(context)=>DailyTask(),
-        '/projects':(context)=>Projects(),
-        '/teams':(context)=>TeamWorks(),
-        '/seeProjects':(context) => SeeProjects(),
-        '/makeTeams':(context) => MakeTeams(),
-        '/personalTasks':(context) => PersonalTasks()
+        '/mainScreen':(context)=>const MainScreen(),
+        '/dailyTask':(context)=>const DailyTask(),
+        '/projects':(context)=>const Projects(),
+        '/teams':(context)=>const TeamWorks(),
+        '/seeProjects':(context) => const SeeProjects(),
+        '/makeTeams':(context) => const MakeTeams(),
+        '/personalTasks':(context) => const PersonalTasks()
         
       },
     );

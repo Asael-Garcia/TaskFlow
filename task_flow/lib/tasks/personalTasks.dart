@@ -36,7 +36,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Ingrese la nueva tarea"),
+          title: const Text("Ingrese la nueva tarea"),
           content: TextField(
             onChanged: (value) {
               newProject = value;
@@ -47,7 +47,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
               onPressed: () {
                 Navigator.pop(context); // Cerrar el dialog sin guardar
               },
-              child: Text("Cancelar"),
+              child: const Text("Cancelar"),
             ),
             TextButton(
               onPressed: () {
@@ -60,7 +60,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
 
                 Navigator.pop(context); // Cerrar el dialog después de guardar
               },
-              child: Text("Guardar"),
+              child: const Text("Guardar"),
             ),
           ],
         );
@@ -75,7 +75,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Ingrese la nueva tarea"),
+          title: const Text("Ingrese la nueva tarea"),
           content: TextField(
             onChanged: (value) {
               newProject = value;
@@ -86,7 +86,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
               onPressed: () {
                 Navigator.pop(context); // Cerrar el dialog sin guardar
               },
-              child: Text("Cancelar"),
+              child: const Text("Cancelar"),
             ),
             TextButton(
               onPressed: () {
@@ -98,7 +98,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
 
                 Navigator.pop(context); // Cerrar el dialog después de guardar
               },
-              child: Text("Guardar"),
+              child: const Text("Guardar"),
             ),
           ],
         );
@@ -111,7 +111,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mis tareas personales"),
+        title: const Text("Mis tareas personales"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,7 +153,7 @@ class _PersonalTasksState extends State<PersonalTasks> {
                         _showInputDialogEdit(actualIndex);
                       },
                     ),
-                    title: Text('${dailyTaskList[actualIndex]}'),
+                    title: Text(dailyTaskList[actualIndex]),
                   );
                 }
               },
@@ -168,8 +168,8 @@ class _PersonalTasksState extends State<PersonalTasks> {
           _showInputDialog(); // Mostrar el Dialog con el campo de entrada
           print("Presioonado");
         },
-        child: Icon(Icons.add),
         tooltip: 'Añadir',
+        child: const Icon(Icons.add),
       ),
     );
   }
