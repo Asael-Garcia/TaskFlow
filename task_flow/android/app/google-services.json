@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "222250741935",
+    "project_id": "task-flow-416a0",
+    "storage_bucket": "task-flow-416a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222250741935:android:22b40311b29d31fa0da45a",
+        "android_client_info": {
+          "package_name": "com.example.task_flow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "222250741935-qo7i2igr6oea63okdgf3njf47jt24ofm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuOCu7TnpQGK-59mPhPcTTv1sbduzzZs0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "222250741935-6ij3o4ti6j8j1m0ssqkpn3b6hifv6s1k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "222250741935-s9kuigdt5l43gbjqkc0fnqb879lt9k6j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.taskFlow"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
