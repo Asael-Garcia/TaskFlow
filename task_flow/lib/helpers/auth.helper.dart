@@ -13,7 +13,6 @@ class AuthHandler{
           auth = true;
         }
     });
-    print(auth);
     return auth;
   }
   
@@ -21,12 +20,13 @@ class AuthHandler{
     await _auth.createUserWithEmailAndPassword(email: email, password: password);
   }
 
-  Future<void> signIn(String email, String password) async {
+  Future<bool> signIn(String email, String password) async {
     try{
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return true;
     }
-    on Error {
-      return;
+    on FirebaseAuthException{
+      return false;
     }
   }
   

@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   int selectedIndex=0;
   @override
   Widget build(BuildContext context) {
-    final screens= [ Home(context: context), const Pendings(), const UserProfile()];
+    final screens= [ Home(context: context), const Pendings(), UserProfile(context: context)];
       
     return MaterialApp(
       

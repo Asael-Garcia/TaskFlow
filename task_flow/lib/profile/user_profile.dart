@@ -1,10 +1,14 @@
+
 import 'package:flutter/material.dart';
 import 'package:task_flow/helpers/auth.helper.dart';
 
 class UserProfile extends StatelessWidget {
-  const UserProfile({super.key});
+  final BuildContext context;
+  const UserProfile({super.key, required this.context});
   handleLogout () async {
     await AuthHandler().logout();
+    Navigator.pushNamed(this.context, '/login');
+
   }
   @override
   Widget build(BuildContext context) {

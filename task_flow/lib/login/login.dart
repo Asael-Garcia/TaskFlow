@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:task_flow/helpers/auth.helper.dart';
 
 class login extends StatefulWidget {
@@ -21,11 +22,13 @@ class _loginState extends State<login> {
     });
     final email = _emailController.value.text;
     final password = _passwordController.value.text;
-    await AuthHandler().signIn(email, password);
+    bool isAuth = await AuthHandler().signIn(email, password);
     setState(() {
       _loading = false;
     });
-    Navigator.pushNamed(context, '/mainScreen');
+    if(isAuth){
+      Navigator.pushNamed(context, '/mainScreen');
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -82,10 +85,14 @@ class _loginState extends State<login> {
                       TextFormField(
                         decoration: const InputDecoration(
                           labelText: 'Correo Electrónico',
-                          border: OutlineInputBorder(), 
+                          border: OutlineInputBorder(),
                         ),
                         textInputAction: TextInputAction.next,
                         controller: _emailController,
+                        validator: ValidationBuilder()
+                                    .email('El email no esta en el formato correcto')
+                                    .required('Campo requerido')
+                                    .build(),
                       ),
                       const SizedBox(height: 16),
                       TextFormField(
@@ -96,6 +103,10 @@ class _loginState extends State<login> {
                         ),
                         textInputAction: TextInputAction.send,
                         controller: _passwordController,
+                        validator: ValidationBuilder()
+                                    .minLength(8, "Debe de tener minimo 8 caracteres")
+                                    .required()
+                                    .build(),
                       ),
                       const SizedBox(height: 24),
                       ElevatedButton(
