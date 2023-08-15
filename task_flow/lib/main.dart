@@ -32,11 +32,11 @@ class taskFlowApp extends StatelessWidget {
           if(snapshot.hasData){
             return const MainScreen();
           }
-          return const landing();
+          return const Landing();
         },
       ),
       routes: {
-        '/landing':(context)=>const landing(),
+        '/landing':(context)=>const Landing(),
         '/login':(context)=>const login(),
         '/home':(context)=>Home(context: context,),
         '/mainScreen':(context)=>const MainScreen(),

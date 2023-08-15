@@ -50,7 +50,7 @@ class _loginState extends State<login> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'ruta_de_la_imagen',
+                      '../assets/user.png',
                       height: 100,
                       width: 100,
                     ),
