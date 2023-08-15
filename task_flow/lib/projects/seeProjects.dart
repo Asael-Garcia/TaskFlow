@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_flow/audio/player.dart';
 
 class SeeProjects extends StatefulWidget {
   const SeeProjects({super.key});
@@ -24,6 +25,7 @@ class _SeeProjectsState extends State<SeeProjects> {
   String respon = "Juan";
   List<String> options = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4'];
   List<String> selectedDateAndTime = [];
+  int play=0;
 
   void _showDateTimePicker() async {
     DateTime? pickedDate = await showDatePicker(
@@ -56,6 +58,13 @@ class _SeeProjectsState extends State<SeeProjects> {
         // Delay removal of the item by 2 seconds
         Future.delayed(const Duration(seconds: 1), () {
           setState(() {
+              if (play==0){
+              playDingDong();
+              play=1;
+            }else{
+              playReady();
+              play=0;
+            }
             isCheckedList.removeAt(index);
             projectItems.removeAt(index);
           });

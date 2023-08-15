@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_flow/audio/player.dart';
 
 class PersonalTasks extends StatefulWidget {
   const PersonalTasks({super.key});
@@ -10,6 +11,7 @@ class PersonalTasks extends StatefulWidget {
 class _PersonalTasksState extends State<PersonalTasks> {
   List<bool> isCheckedList = [false, false, false, false];
   List<String> dailyTaskList = ["Hola", "Como", "Estan", "Todos"];
+  int play=0;
 
   void _onCheckboxChanged(bool newValue, int index) {
     setState(() {
@@ -22,6 +24,13 @@ class _PersonalTasksState extends State<PersonalTasks> {
           setState(() {
             isCheckedList.removeAt(index);
             dailyTaskList.removeAt(index);
+              if (play==0){
+              playDingDong();
+              play=1;
+            }else{
+              playReady();
+              play=0;
+            }
             print(dailyTaskList);
           });
         });
